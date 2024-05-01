@@ -2,17 +2,20 @@ NAME	:= push_swap
 
 CFLAGS	:= -Wextra -Wall -Werror -g3
 
-HEADERS	:= -Iinclude
+HEADERS	:= -Iinclude -Ilibft
 
 SRCS	:= 	src/main.c \
-			src/ft_lst_swap_and_push.c \
-			src/ft_lst_cmd2.c \
 			src/ft_lst_init.c \
+			src/ft_lst_rev_rotate.c \
+			src/ft_lst_rotate.c \
+			src/ft_lst_swap_and_push.c \
 			src/ft_lst_utils.c \
+			src/ft_parse.c \
 			src/ft_printf.c \
 			src/ft_printf2.c \
+			src/ft_split.c \
 			src/ft_utils.c \
-
+			src/ft_utils2.c \
 
 OBJS	:= ${SRCS:.c=.o}
 
