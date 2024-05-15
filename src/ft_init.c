@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_rotate.c                                    :+:      :+:    :+:   */
+/*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 22:42:07 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/05/15 20:18:50 by trgaspar         ###   ########.fr       */
+/*   Created: 2024/05/10 20:32:49 by trgaspar          #+#    #+#             */
+/*   Updated: 2024/05/15 17:06:37 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_rr(t_stack *stack, t_p_s *a, t_p_s *b)
+int	ft_init(int argc, char *argv[], t_stack	*stack)
 {
-	stack->a = ft_rotate(&a, 0);
-	stack->b = ft_rotate(&b, 1);
-	ft_printf("rr\n");
-}
-
-t_p_s	*ft_rotate(t_p_s **a, int bool)
-{
-	t_p_s	*first;
-	t_p_s	*last;
-	t_p_s	*tmp;
-
-	first = *a;
-	last = ft_lstlast(*a);
-	tmp = (*a)->next;
-	last->next = first;
-	first->next = NULL;
-	*a = tmp;
-	if (!bool)
-		ft_printf("ra\n");
+	int		i;
+	int		status;
+	char	**array;
+	
+	stack->tmp = calloc(1, ft_lstsize(stack->a));
+	array = NULL;
+	status = EXIT_SUCCESS;
+	i = 1;
+	if (argc == 2)
+	{
+		array = ft_split(argv[1], ' ');
+		status = ft_check_number_arg(stack, array, 0);
+		if (status == 1)
+			return (1);
+	}
 	else
-		ft_printf("rb\n");
-	return (*a);
+	{
+		status = ft_check_number_arg(stack, argv, i);
+		if (status == 1)
+			return (1);
+	}
+	return (status);
 }

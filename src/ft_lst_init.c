@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:44:34 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/04/23 20:25:30 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/05/15 18:34:24 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,15 @@ void	ft_lstadd_back(t_p_s **a, t_p_s *new)
 	{
 		tmp = ft_lstlast(*a);
 		tmp->next = new;
-		new->back = tmp;
 	}
+}
+
+void	ft_lstadd_front(t_p_s **a, t_p_s *new)
+{
+	if (!a || !new)
+		return ;
+	new->next = *a;
+	*a = new;
 }
 
 int	ft_lstsize(t_p_s *a)
@@ -57,7 +64,8 @@ t_p_s	*ft_lstnew(int nb)
 	if (!a)
 		return (NULL);
 	a->nb = nb;
-	a->back = NULL;
+	if (nb > 2147483647)
+		printf("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
 	a->next = NULL;
 	return (a);
 }

@@ -5,6 +5,9 @@ CFLAGS	:= -Wextra -Wall -Werror -g3
 HEADERS	:= -Iinclude -Ilibft
 
 SRCS	:= 	src/main.c \
+			src/ft_algo.c \
+			src/ft_init.c \
+			src/ft_check.c \
 			src/ft_lst_init.c \
 			src/ft_lst_rev_rotate.c \
 			src/ft_lst_rotate.c \

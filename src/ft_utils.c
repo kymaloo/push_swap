@@ -6,16 +6,16 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 03:38:16 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/04/26 21:36:45 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/05/13 14:45:18 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr, int *error)
 {
-	int	sign;
-	int	nb;
+	int			sign;
+	long long	nb;
 
 	sign = 1;
 	nb = 0;
@@ -27,10 +27,14 @@ int	ft_atoi(const char *nptr)
 			sign *= -1;
 		nptr++;
 	}
+	while (*nptr == '0')
+		nptr++;
 	while (*nptr >= '0' && *nptr <= '9')
 	{
 		nb = (nb * 10) + (*nptr - '0');
 		nptr++;
+		if ((sign < 0 && -nb < INT_MIN) || (sign > 0 && nb > INT_MAX))
+			*error = 1;
 	}
 	return (nb * sign);
 }

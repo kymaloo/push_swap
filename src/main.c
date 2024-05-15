@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 19:33:22 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/05/01 15:02:09 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/05/15 21:56:37 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,40 +15,95 @@
 int	main(int argc, char *argv[])
 {
 	int		status;
-	int		i;
-	char	**tab;
 	t_stack	*stack;
 
-	tab = NULL;
-	status = EXIT_FAILURE;
-	i = 0;
+	status = EXIT_SUCCESS;
 	if (argc == 1)
 	{
 		ft_printf("Error\n");
+		status = EXIT_FAILURE;
 		return (status);
 	}
 	stack = ft_calloc(1, sizeof(t_stack));
 	if (!stack)
 		free(stack);
-	if (argc == 2)
+	status = ft_init(argc, argv, stack);
+	if (status == EXIT_FAILURE)
 	{
-		tab = ft_split(argv[1], ' ');
-		ft_check_number_arg(stack, tab, i);
+		ft_lstclear(&stack->a);
+		free(stack);
+		return (status);
 	}
-	else
-		ft_check_number_arg(stack, argv, i);
+	//ft_print_all_lst(stack->a);
+	//ft_print_all_lst(stack->a);
+	//puts("\n");
+	stack->a = ft_tri_for_5(stack->a, stack->b, 0);
+	puts("\n");
 	ft_print_all_lst(stack->a);
-	free(stack);
-	status = EXIT_SUCCESS;
+	//ft_print_all_lst(stack->b);
+	
+	//stack->a = ft_swap(stack->a);
+	//stack->a = ft_rev_rotate(&stack->a);
+	//stack->b = ft_push(&stack->a, stack->b, 1);
+	//ft_print_all_lst(stack->a);
+	//ft_print_all_lst(stack->b);
+	
+
+	
+//	ft_sort_int_tab(stack->tmp, ft_lstsize(stack->a));
 	return (status);
 }
 
-void	ft_check_number_arg(t_stack *stack, char **tab, int i)
+
+
+void	ft_sort_int_tab(char *tab, int size)
 {
-	while (tab[i] != NULL)
+	int	i;
+	int	swap;
+
+	while (size >= 0)
 	{
-		if (!ft_check_arg(tab[i]))
-			ft_lstadd_back(&stack->a, ft_lstnew(ft_atoi(tab[i])));
-		i++;
+		i = 0;
+		while (i < size - 1)
+		{
+			if (tab[i] > tab[i + 1])
+			{
+				swap = tab[i];
+				tab[i] = tab[i + 1];
+				tab[i + 1] = swap;
+			}
+			i++;
+		}
+		size--;
 	}
 }
+
+// void ft_bubble_sort(t_p_s *a)
+// {
+//     int swapped;
+// 	int	temp;
+//     t_p_s *i;
+//     t_p_s *j = NULL;
+
+//     if (a == NULL)
+//         return;
+//     swapped = 1;
+//     while (swapped)
+// 	{
+//         swapped = 0;
+//         i = a;
+
+//         while (i->next != j)
+// 		{
+//             if (i->nb > i->next->nb)
+// 			{
+//                 temp = i->nb;
+//                 i->nb = i->next->nb;
+//                 i->next->nb = temp;
+//                 swapped = 1;
+//             }
+//             i = i->next;
+//         }
+//         j = i;
+//     }
+// }
