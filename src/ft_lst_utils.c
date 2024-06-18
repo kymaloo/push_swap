@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:45:43 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/05/13 19:06:00 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:49:20 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,9 @@ void	ft_print_all_lst(t_p_s *a)
 	t_p_s	*cursor;
 
 	cursor = a;
-	ft_printf("1 :\n");
 	while (cursor)
 	{
-		ft_printf("nb : %d\n", cursor->nb);
+		ft_printf("print : %d\n", cursor->nb);
 		cursor = cursor->next;
 	}
 	cursor = ft_lstlast(a);

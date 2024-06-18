@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:44:34 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/05/15 18:34:24 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:49:36 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_lstadd_front(t_p_s **a, t_p_s *new)
 
 int	ft_lstsize(t_p_s *a)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (a)
@@ -48,7 +48,7 @@ int	ft_lstsize(t_p_s *a)
 
 t_p_s	*ft_lstlast(t_p_s *a)
 {
-	size_t	i;
+	int	i;
 
 	i = ft_lstsize(a);
 	while (i-- > 1)
@@ -64,8 +64,6 @@ t_p_s	*ft_lstnew(int nb)
 	if (!a)
 		return (NULL);
 	a->nb = nb;
-	if (nb > 2147483647)
-		printf("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
 	a->next = NULL;
 	return (a);
 }

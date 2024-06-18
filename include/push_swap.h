@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 19:32:39 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/05/15 21:54:14 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/06/12 19:40:17 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,35 +18,43 @@
 # include <unistd.h>
 # include <stdarg.h>
 # define INT_MIN -2147483648
+# define STACK_A 0
+# define STACK_B 1
 # define INT_MAX 2147483647
 
 typedef struct s_p_s
 {
 	int				nb;
 	struct s_p_s	*next;
-}			t_p_s;
+}					t_p_s;
 
 typedef struct s_stack
 {
-	t_p_s		*a;
-	t_p_s		*b;
-	char		*tmp;
-	int			size;
-}			t_stack;
+	t_p_s	*a;
+	t_p_s	*b;
+	int		count_a;
+	int		count_b;
+}				t_stack;
 
-t_p_s   *ft_tri_for_3(t_p_s *a);
-t_p_s   *ft_tri_for_4(t_p_s *a, t_p_s *b, int result);
-t_p_s    *ft_tri_for_5(t_p_s *a, t_p_s *b, int result);
-int		ft_find_little(t_p_s *a);
+// File : check.c
+int		ft_check_len_str(char *str);
+int		ft_check_number_arg(t_stack *stack, char **tab, int i);
+int		ft_get_little(t_stack *stack, int bool);
+int		ft_get_big(t_stack *stack, int bool);
+int		ft_check_format_arg(char *str);
 
-//void	ft_bubble_sort(t_p_s *a);
-void	ft_sort_int_tab(char *tab, int size);
-
-// File : main.c
-int	ft_check_number_arg(t_stack *stack, char **tab, int i);
+// File : free.c
+void	ft_free_all2(t_stack *stack);
 
 // File : ft_init.c
-int	ft_init(int argc, char *argv[], t_stack	*stack);
+int		ft_init(int argc, char *argv[], t_stack	**stack);
+int		ft_init_arg(int argc, char *argv[], t_stack	*stack);
+int		ft_init_struct(t_stack **stack);
+
+// File : ft_launch_algo.c
+void	rotate_or_rev_rotate_a(t_stack *stack, int nb, int identify);
+void	rotate_or_rev_rotate_b(t_stack *stack, int nb, int identify);
+void	ft_launch_algo(t_stack *stack);
 
 // File : ft_lst_init.c
 void	ft_lstadd_back(t_p_s **a, t_p_s *new);
@@ -96,6 +104,22 @@ char	**ft_split(const char *s, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlcpy(char	*dst, const char *src, size_t size);
 
+// File : ft_tri_for_3.c
+t_p_s	*ft_tri_for_3(t_p_s *a);
+
+// File : ft_turc_sort_utils.c
+void	ft_all_push_stack_b(t_stack *stack);
+int		search_value(int nb, t_stack *stack);
+int		get_index(t_stack *stack, int nb, int bool);
+int		return_best_number(t_stack *stack);
+void	finish_tri(t_stack *stack);
+
+// File : ft_turc_sort.c
+int		move_to_top_count(t_stack *stack, int nb, int identify);
+int		count_number_a(t_stack *stack, int nb);
+int		count_number_b(t_stack *stack, int nb);
+void	move_to_top(t_stack *stack, int nb);
+
 // File : ft_utils.c
 int		ft_atoi(const char *nptr, int *error);
 size_t	ft_strlen(const char *s);
@@ -105,8 +129,5 @@ void	*ft_memset(void *s, int c, size_t n);
 
 // File : ft_utils2.c
 char	*ft_strdup(const char *s);
-
-
-int ft_check_len_str(char *str);
 
 #endif

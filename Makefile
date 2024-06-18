@@ -1,11 +1,13 @@
-NAME	:= push_swap
+NAME	:=  push_swap
 
 CFLAGS	:= -Wextra -Wall -Werror -g3
 
-HEADERS	:= -Iinclude -Ilibft
+HEADERS	:= -Iinclude
 
 SRCS	:= 	src/main.c \
-			src/ft_algo.c \
+			src/ft_tri_for_3.c \
+			src/ft_turc_sort_utils.c \
+			src/ft_turc_sort.c \
 			src/ft_init.c \
 			src/ft_check.c \
 			src/ft_lst_init.c \
@@ -19,16 +21,12 @@ SRCS	:= 	src/main.c \
 			src/ft_split.c \
 			src/ft_utils.c \
 			src/ft_utils2.c \
+			src/ft_free.c \
+			src/ft_launch_algo.c \
 
 OBJS	:= ${SRCS:.c=.o}
-
+		   
 all: $(NAME)
-
-r: re
-	./$(NAME)
-
-v: re
-	valgrind -s --leak-check=full --track-origins=yes  ./$(NAME) 42 69 23 -42
 
 n:
 	norminette src/ include/
@@ -36,9 +34,8 @@ n:
 %.o: %.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
 
-re :
-$(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(HEADERS) -o $(NAME)
+$(NAME):  $(OBJS)
+		@$(CC) $(CFLAGS) $(OBJS) $(HEADERS) -o $(NAME)
 
 clean:
 	@rm -rf $(OBJS)

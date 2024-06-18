@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 03:38:16 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/05/13 14:45:18 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:12:53 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ int	ft_atoi(const char *nptr, int *error)
 	{
 		nb = (nb * 10) + (*nptr - '0');
 		nptr++;
-		if ((sign < 0 && -nb < INT_MIN) || (sign > 0 && nb > INT_MAX))
-			*error = 1;
 	}
-	return (nb * sign);
+	nb = nb * sign;
+	if ((sign < 0 && nb < INT_MIN) || (sign > 0 && nb > INT_MAX))
+		*error = 1;
+	return (nb);
 }
 
 size_t	ft_strlen(const char *s)

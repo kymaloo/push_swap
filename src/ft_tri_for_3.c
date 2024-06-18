@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_tri_for_3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/19 19:33:22 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/06/12 19:25:49 by trgaspar         ###   ########.fr       */
+/*   Created: 2024/05/15 17:12:55 by trgaspar          #+#    #+#             */
+/*   Updated: 2024/06/12 18:53:54 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
+t_p_s	*ft_tri_for_3(t_p_s *a)
 {
-	int		status;
-	t_stack	*stack;
+	t_p_s	*first;
+	t_p_s	*second;
+	t_p_s	*last;
 
-	status = EXIT_SUCCESS;
-	if (argc == 1)
-	{
-		ft_printf("Error\n");
-		status = EXIT_FAILURE;
-		return (status);
-	}
-	status = ft_init(argc, argv, &stack);
-	ft_launch_algo(stack);
-	ft_free_all2(stack);
-	return (status);
+	first = a;
+	second = a->next;
+	last = a->next->next;
+	if ((first->nb > second->nb) && (first->nb > last->nb))
+		a = ft_rotate(&a, 0);
+	else if ((first->nb < second->nb) && (second->nb > last->nb))
+		a = ft_rev_rotate(&a, 0);
+	if (is_sorted(a) == 1)
+		a = ft_swap(a, 0);
+	return (a);
 }
