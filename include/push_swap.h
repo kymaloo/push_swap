@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 19:32:39 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/06/12 19:40:17 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/06/18 15:54:23 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
 # include <stdarg.h>
 # define INT_MIN -2147483648

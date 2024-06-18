@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 21:27:56 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/06/12 19:32:51 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/06/18 16:07:10 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,22 @@
 
 int	ft_check_len_str(char *str)
 {
+	int	i;
 	int	len;
 	int	status;
 
+	i = 0;
 	len = ft_strlen(str);
 	status = EXIT_SUCCESS;
-	if (len == 1 && (*str == '+' || *str == '-'))
+	if (len == 1 && (str[i] == '+' || str[i] == '-'))
 		status = EXIT_FAILURE;
-	while (*str)
+	while (str[i])
 	{
-		if (*str == '+' || *str == '-')
-			str++;
-		if (*str < '0' || *str > '9')
+		if (str[i] == '+' || str[i] == '-')
+			i++;
+		if (str[i] < '0' || str[i] > '9')
 			return (1);
-		str++;
+		i++;
 	}
 	return (status);
 }

@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 19:33:22 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/06/12 19:25:49 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/06/18 16:01:08 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	main(int argc, char *argv[])
 		return (status);
 	}
 	status = ft_init(argc, argv, &stack);
+	if (status == 1)
+		return (EXIT_FAILURE);
 	ft_launch_algo(stack);
 	ft_free_all2(stack);
 	return (status);

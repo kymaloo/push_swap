@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 20:32:49 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/06/12 19:24:05 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/06/18 16:07:16 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	ft_init_arg(int argc, char *argv[], t_stack	*stack)
 	i = 1;
 	if (argc == 2)
 	{
+		if (argv[1])
+			return (1);
 		tab = ft_split(argv[1], ' ');
 		status = ft_check_number_arg(stack, tab, 0);
 		if (status == 1)

@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 22:42:07 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/06/12 18:56:21 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/06/18 15:54:31 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_rr(t_stack *stack, t_p_s *a, t_p_s *b)
 {
 	stack->a = ft_rotate(&a, 0);
 	stack->b = ft_rotate(&b, 1);
-	printf("rr\n");
+	ft_printf("rr\n");
 }
 
 t_p_s	*ft_rotate(t_p_s **a, int bool)
