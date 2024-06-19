@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 19:33:22 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/06/18 16:01:08 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/06/19 12:57:40 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ int	main(int argc, char *argv[])
 	status = ft_init(argc, argv, &stack);
 	if (status == 1)
 		return (EXIT_FAILURE);
+	if (argc == 3)
+	{
+		if (is_sorted(stack->a) != 0)
+			stack->a = ft_swap(stack->a, 0);
+		ft_free_all2(stack);
+		return (EXIT_SUCCESS);
+	}
 	ft_launch_algo(stack);
 	ft_free_all2(stack);
 	return (status);
