@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 19:33:22 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/06/19 12:57:40 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/06/21 16:28:04 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	main(int argc, char *argv[])
 		ft_free_all2(stack);
 		return (EXIT_SUCCESS);
 	}
-	ft_launch_algo(stack);
+	if (is_sorted(stack->a) != 0)
+		ft_launch_algo(stack);
 	ft_free_all2(stack);
 	return (status);
 }
